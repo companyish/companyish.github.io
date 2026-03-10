@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Companyish — Not a company, yet.</title>
+  <meta name="description" content="Companyish — Building things, one app at a time.">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --text-muted: #888;
+      --border: #222;
+      --badge-bg: #1a1a1a;
+      --badge-text: #aaa;
+      --toggle-bg: #1a1a1a;
+      --card-bg: #0a0a0a;
+    }
+
+    [data-theme="light"] {
+      --bg: #fff;
+      --text: #000;
+      --text-muted: #666;
+      --border: #e0e0e0;
+      --badge-bg: #f0f0f0;
+      --badge-text: #666;
+      --toggle-bg: #f0f0f0;
+      --card-bg: #f8f8f8;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--toggle-bg);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      width: 3.25rem;
+      height: 1.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0.2rem;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .theme-toggle .knob {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--text);
+      transition: transform 0.3s ease, background 0.3s ease;
+      transform: translateX(0);
+    }
+
+    [data-theme="light"] .theme-toggle .knob {
+      transform: translateX(1.5rem);
+    }
+
+    .container {
+      max-width: 32rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    .brand {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .apps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      text-align: left;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .app-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .badge {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 0.25rem 0.625rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .app-desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .divider {
+      width: 2rem;
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto 1.5rem;
+    }
+
+    .contact {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s ease;
+    }
+
+    .contact a:hover {
+      border-color: var(--text);
+    }
+
+    @media (max-width: 480px) {
+      .brand {
+        font-size: 2rem;
+      }
+
+      .tagline {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+    <span class="knob"></span>
+  </button>
+
+  <div class="container">
+    <h1 class="brand">companyish</h1>
+    <p class="tagline">Not a company, yet.</p>
+    <p class="subtitle">Building things, one app at a time.</p>
+
+    <div class="apps">
+      <div class="app-card">
+        <div class="app-header">
+          <span class="app-name">WordRun!</span>
+          <span class="badge">Coming Soon</span>
+        </div>
+        <p class="app-desc">The real-time multiplayer word game.</p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-header">
+          <span class="app-name">Foodprints</span>
+          <span class="badge">Coming Soon</span>
+        </div>
+        <p class="app-desc">Great food deserves to be remembered.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="contact">
+      Get in touch — <a href="mailto:contact@companyish.com">contact@companyish.com</a>
+    </p>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+
+    (function () {
+      var saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    })();
+  </script>
+</body>
+</html>

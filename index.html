@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,16 +115,32 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 0.75rem;
-      padding: 1.5rem;
+      padding: 1.25rem 1.5rem;
       text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
       transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .app-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .app-content {
+      flex: 1;
+      min-width: 0;
     }
 
     .app-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
     }
 
     .app-name {
@@ -141,6 +157,7 @@
       padding: 0.25rem 0.625rem;
       border-radius: 1rem;
       border: 1px solid var(--border);
+      flex-shrink: 0;
     }
 
     .app-desc {
@@ -180,6 +197,11 @@
       .tagline {
         font-size: 1rem;
       }
+
+      .app-icon {
+        width: 3rem;
+        height: 3rem;
+      }
     }
   </style>
 </head>
@@ -189,25 +211,31 @@
   </button>
 
   <div class="container">
-    <h1 class="brand">companyish</h1>
+    <h1 class="brand">Companyish</h1>
     <p class="tagline">Not a company, yet.</p>
     <p class="subtitle">Building things, one app at a time.</p>
 
     <div class="apps">
       <div class="app-card">
-        <div class="app-header">
-          <span class="app-name">WordRun!</span>
-          <span class="badge">Coming Soon</span>
+        <img src="icons/wordrun.png" alt="WordRun! icon" class="app-icon">
+        <div class="app-content">
+          <div class="app-header">
+            <span class="app-name">WordRun!</span>
+            <span class="badge">Coming Soon</span>
+          </div>
+          <p class="app-desc">The real-time multiplayer word game.</p>
         </div>
-        <p class="app-desc">The real-time multiplayer word game.</p>
       </div>
 
       <div class="app-card">
-        <div class="app-header">
-          <span class="app-name">Foodprints</span>
-          <span class="badge">Coming Soon</span>
+        <img src="icons/foodprints.png" alt="Foodprints icon" class="app-icon">
+        <div class="app-content">
+          <div class="app-header">
+            <span class="app-name">Foodprints</span>
+            <span class="badge">Coming Soon</span>
+          </div>
+          <p class="app-desc">Great food deserves to be remembered.</p>
         </div>
-        <p class="app-desc">Great food deserves to be remembered.</p>
       </div>
     </div>
 
@@ -231,6 +259,9 @@
       var saved = localStorage.getItem('theme');
       if (saved) {
         document.documentElement.setAttribute('data-theme', saved);
+      } else {
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
       }
     })();
   </script>
